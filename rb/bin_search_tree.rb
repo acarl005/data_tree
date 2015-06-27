@@ -67,6 +67,12 @@ class BinSearchTree
     @head.left.height
   end
 
+  def unbalanced?
+    return -1 if left_height - right_height > 1
+    return 1 if right_height - left_height > 1
+    false
+  end
+
   def to_s
     tree_print(@head) if @head
   end
@@ -81,3 +87,5 @@ p tree.right_height
 p tree.left_height
 
 puts tree
+
+p tree.find { |node| node == 2 }
