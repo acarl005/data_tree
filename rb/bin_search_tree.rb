@@ -1,9 +1,10 @@
 require_relative 'node'
+require_relative 'tree_print'
 require 'pry'
 
 class BinSearchTree
 
-  include Enumerable
+  include Enumerable, TreePrint
   attr_reader :head
 
 
@@ -66,36 +67,8 @@ class BinSearchTree
     @head.left.height
   end
 
-  def display
-    repr(@head) if @head
-  end
-
-  def repr(*hosts)
-    return '' if !hosts.any?
-    height = hosts.compact.map(&:height).max
-    buffer = indent(height)
-    str = ""
-    row = hosts.inject("") do |sum, node|
-      sum + buffer + node.val.to_s + buffer + " " rescue sum + buffer + " " + buffer + " "
-    end + " \n"
-    str << row
-    if height > 1
-      (2**(height-2)).times do
-        row = row.gsub(/ \//, '/ ').gsub(/\\ /, " \\").gsub(/ \d+ /, '/ \\')
-        str << row
-      end
-    end
-    return str + repr(*hosts.flat_map{ |host|
-      if !host
-        [nil, nil]
-      else
-        [host.left, host.right]
-      end
-    })
-  end
-
-  def indent(height)
-    " " * (1...height).inject { |sum, n| sum + 2 ** (n-1) } rescue ""
+  def to_s
+    tree_print(@head) if @head
   end
 
 end
@@ -107,7 +80,7 @@ p tree.height
 p tree.right_height
 p tree.left_height
 
-puts tree.display
+puts tree
 
 
 =begin
