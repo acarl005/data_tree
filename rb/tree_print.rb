@@ -10,7 +10,7 @@ module TreePrint
     str << row
     if height > 1
       (2**(height-2)).times do
-        row = row.gsub(/ \//, '/ ').gsub(/\\ /, " \\").gsub(/ \d+ /, '/ \\')
+        row = row.gsub(/ \//, '/ ').gsub(/\\ /, " \\").gsub(/ \w+ /, '/ \\')
         str << row
       end
     end
