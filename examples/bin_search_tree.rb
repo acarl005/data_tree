@@ -1,6 +1,5 @@
 require_relative 'node'
-require_relative 'tree_print'
-require 'pry'
+require 'tree_print'
 
 class BinSearchTree
 
@@ -134,18 +133,7 @@ class BinSearchTree
   end
 
   def to_s
-    tree_print(@head) if @head
+    tree_to_s(@head) if @head
   end
 
 end
-
-tree = BinSearchTree.new
-tree + 4 + 2 + 3 + 2 + 1 + 1 + 6 + 5 + 5 + 4 + 4 + 15 + 18 + 21 + 7 + 8 + 9
-
-puts tree
-
-tree - 6 - 3
-
-puts tree
-
-p tree.map(&:to_s)
