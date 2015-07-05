@@ -1,20 +1,25 @@
 module TreePrint
-  def tree_print(*hosts)
+  def tree_to_s(*hosts)
     return '' if !hosts.any?
     height = hosts.compact.map(&:height).max
     buffer = indent(height)
+    max_length = hosts.compact.map { |node| node.val.to_s.length }.max
+    max_length = [8, max_length].min
     str = ""
-    row = hosts.inject("") do |sum, node|
-      sum + buffer + node.val.to_s + buffer + " " rescue sum + buffer + " " + buffer + " "
-    end + " \n"
-    str << row
+    row = ""
+    max_length.times do |i|
+      row = hosts.inject("") do |sum, node|
+        sum + buffer + node.val.to_s[i] + buffer + " " rescue sum + buffer + "." + buffer + " "
+      end + " \n"
+      str << row
+    end
     if height > 1
       (2**(height-2)).times do
-        row = row.gsub(/ \//, '/ ').gsub(/\\ /, " \\").gsub(/ \w+ /, '/ \\')
+        row = row.gsub(/ \//, '/ ').gsub(/\\ /, " \\").gsub(/ [\w|.] /, '/ \\')
         str << row
       end
     end
-    return str + tree_print(*hosts.flat_map{ |host|
+    return str + tree_to_s(*hosts.flat_map{ |host|
       if !host
         [nil, nil]
       else

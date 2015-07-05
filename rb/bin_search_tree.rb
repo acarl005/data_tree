@@ -134,7 +134,7 @@ class BinSearchTree
   end
 
   def to_s
-    tree_print(@head) if @head
+    tree_to_s(@head) if @head
   end
 
 end

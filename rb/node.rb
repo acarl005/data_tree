@@ -1,5 +1,6 @@
 class Node
 
+  include Comparable
   attr_accessor :val, :left, :right
 
   def initialize(val)
@@ -13,28 +14,8 @@ class Node
     1 + [height(host.left), height(host.right)].max
   end
 
-  def ==(node)
-    val == node
-  end
-
   def <=>(node)
     val <=> node.val
-  end
-
-  def <(node)
-    val < node.val
-  end
-
-  def >(node)
-    val > node.val
-  end
-
-  def <=(node)
-    val <= node.val
-  end
-
-  def >=(node)
-    val >= node.val
   end
 
   def to_s
