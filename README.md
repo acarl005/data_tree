@@ -20,3 +20,7 @@ Running the `example.rb` in the examples directory produces the following output
 ![example1](examples/ex_1.png)
 ![example2](examples/ex_2.png)
 ![example3](examples/ex_3.png)
+
+## RubyGems link
+
+[https://rubygems.org/gems/tree_print](https://rubygems.org/gems/tree_print)
