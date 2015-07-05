@@ -147,3 +147,5 @@ puts tree
 tree - 6 - 3
 
 puts tree
+
+p tree.map(&:to_s)
