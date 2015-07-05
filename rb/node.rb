@@ -37,4 +37,22 @@ class Node
     val >= node.val
   end
 
+  def to_s
+    val.to_s
+  end
+
+  def num_children
+    (left ? 1 : 0) + (right ? 1 : 0)
+  end
+
+  def leftmost_child
+    host = self
+    parent = nil
+    until !host.left
+      parent = host
+      host = host.left
+    end
+    [host, parent]
+  end
+
 end
