@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'tree_print'
-  s.version     = '0.0.1'
+  s.version     = '0.1.0'
   s.date        = '2015-07-05'
   s.summary     = "Print your tree data structures as a nicely formatted string!"
   s.description = "Recursive method that converts the head node to a plain string, allowing you to print and visualize your binary tree."
